@@ -1,4 +1,4 @@
-# Instructions to set up openai api with azure ai 
+# Instructions to set up openai api with azure ai (As of 2/7/2024)
 ## Get access to openai group ad-group as well as install Azure cli tool
 ### Accessing Azure CLI:
 Download Azure CLI from [azure cli](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
