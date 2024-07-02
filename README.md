@@ -1,4 +1,4 @@
-# Instructions to set up openai api with azure ai 
+# Instructions to set up openai api with azure ai (As of 2/7/2024)
 ## Get access to openai group ad-group as well as install Azure cli tool
 ### Accessing Azure CLI:
 Download Azure CLI from [azure cli](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
@@ -32,3 +32,11 @@ Run the environment.py script before running anything else. Do re-run environmen
 I personally had no issues with the certificate (I just downloaded the certificate). However, if you do face issues, Insert the following code into environment.py:
 `os.environ['REQUESTS_CA_BUNDLE'] = [path to certificate]`
 You may access the certificate from the relevant parties
+
+## Resources to help
+[Datacamp: getting started on how to call GPT 4o api](https://www.datacamp.com/tutorial/gpt4o-api-openai-tutorial)
+
+[Gpt 4o cookbook](https://cookbook.openai.com/examples/gpt4o/introduction_to_gpt4o)
+
+## files
+
