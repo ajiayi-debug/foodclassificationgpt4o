@@ -35,5 +35,6 @@ You may access the certificate from the relevant parties
 
 ## Resources to help
 [Datacamp: getting started on how to call GPT 4o api](https://www.datacamp.com/tutorial/gpt4o-api-openai-tutorial)
+
 [Gpt 4o cookbook](https://cookbook.openai.com/examples/gpt4o/introduction_to_gpt4o)
 
