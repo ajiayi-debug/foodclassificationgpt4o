@@ -19,7 +19,7 @@ from moviepy.editor import VideoFileClip
 os.environ['AZURE_OPENAI_ENDPOINT'] = endpoint
 os.environ['AZURE_OPENAI_API_KEY'] = tok
 # encode video into Videodata folder
-VIDEO_PATH = "Videodata/Foodvideo.mp4"
+VIDEO_PATH = "./Videodata/Foodvideo.mp4"
 
 def process_video(video_path, seconds_per_frame=2):
     base64Frames = []
@@ -55,7 +55,7 @@ def process_video(video_path, seconds_per_frame=2):
 
 # Extract 1 frame per second. You can adjust the `seconds_per_frame` parameter to change the sampling rate
 base64Frames, audio_path = process_video(VIDEO_PATH, seconds_per_frame=2)
-
+print(len(base64Frames))
 # Initialize the AzureOpenAI client
 client = AzureOpenAI(
     azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"), 
@@ -65,31 +65,29 @@ client = AzureOpenAI(
 
 
 # Transcribe the audio
-transcription = client.audio.transcriptions.create(
-    model="whisper-1",
-    file=open(audio_path, "rb"),
-)
+# transcription = client.audio.transcriptions.create(
+#     model="whisper-1",
+#     file=open(audio_path, "rb"),
+# )
 ## OPTIONAL: Uncomment the line below to print the transcription
 #print("Transcript: ", transcription.text + "\n\n")
 ## Generate a summary with visual and audio
 
-response = client.chat.completions.create(
-    model="gpt-4o",
-    messages=[
-    {"role": "system", "content":"""You are generating a video summary. Create a summary of the provided video and its transcript. Respond in Markdown"""},
-    {"role": "user", "content": [
-        "These are the frames from the video.",
-        *map(lambda x: {"type": "image_url", 
-                        "image_url": {"url": f'data:image/jpg;base64,{x}', "detail": "low"}}, base64Frames),
-        {"type": "text", "text": f"The audio transcription is: {transcription.text}"}
-        ],
-    }
-],
-    temperature=0,
-)
+# response = client.chat.completions.create(
+#     model="gpt-4o",
+#     messages=[
+#     {"role": "system", "content": "You are generating a video summary. Please provide a summary of the video. Respond in Markdown."},
+#     {"role": "user", "content": [
+#         "These are the frames from the video.",
+#         *map(lambda x: {"type": "image_url", 
+#                         "image_url": {"url": f'data:image/jpg;base64,{x}', "detail": "low"}}, base64Frames)
+#         ],
+#     }
+#     ],
+#     temperature=0,
+# )
+# print(response.choices[0].message.content)
 
-# Print the response
-print(response.choices[0].message.content)
 
 
 
