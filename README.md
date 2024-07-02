@@ -31,9 +31,3 @@ Run the environment.py script before running anything else. Do re-run environmen
 I personally had no issues with the certificate (I just downloaded the certificate). However, if you do face issues, Insert the following code into environment.py:
 `os.environ['REQUESTS_CA_BUNDLE'] = [path to certificate]`
 You may access the certificate from the relevant parties
-
-
-## Certificate issues
-I personally had no issues with the certificate (I just downloaded the certificate). However, if you do face issues, Insert the following code into environment.py:
-`os.environ['REQUESTS_CA_BUNDLE'] = [path to certificate]`.
-You may access the certificate from the relevant parties
