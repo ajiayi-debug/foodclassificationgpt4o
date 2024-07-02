@@ -21,14 +21,14 @@ def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")
 
-base64_image = encode_image("Onion.jfif") #can be image url as well
+base64_image = encode_image("puppy.jfif") #can be image url as well
 
 
 # Create a completion request
 response = client.chat.completions.create(
     model="gpt-4o",  # Adjust the model name as needed
     messages=[
-        {"role": "system", "content": "You are a helpful assistant that responds in Markdown. Help me with my math homework!"},
+        {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": [
             {"type": "text", "text": "Describe the image"},
             {"type": "image_url", "image_url": {
