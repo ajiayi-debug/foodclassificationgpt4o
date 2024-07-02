@@ -23,6 +23,8 @@ os.environ['OPENAITOKEN'] = token
 tok=token
 endpoint = [endpoint]
 
+```
 
+Run the environment.py script before running anything else. Do re-run environment.py every hour or so as the token refreshes every hour
 
 
