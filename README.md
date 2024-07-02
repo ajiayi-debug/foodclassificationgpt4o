@@ -10,6 +10,7 @@ Take note of the path with `./az.cmd`. You will need this path to create your en
 Token can be automatically created using environment.py script while endpoint can be found in Azure AI Studios/ Resources and Keys/ Resource name/ </> View Code
 
 ## Create environment.py
+Replace [endpoint] and [az cli] with the respective links and paths
 ```sh
 import os
 import subprocess
