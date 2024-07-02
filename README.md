@@ -28,3 +28,7 @@ endpoint = [endpoint]
 Run the environment.py script before running anything else. Do re-run environment.py every hour or so as the token refreshes every hour
 
 
+## Certificate issues
+I personally had no issues with the certificate (I just downloaded the certificate). However, if you do face issues, Insert the following code into environment.py:
+`os.environ['REQUESTS_CA_BUNDLE'] = [path to certificate]`.
+You may access the certificate from the relevant parties
