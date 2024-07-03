@@ -21,10 +21,10 @@ def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")
 
-base64_image1 = encode_image("./ytf1.jfif") 
-base64_image2 = encode_image("./ytf3.jfif") 
-base64_image3 = encode_image("./ytf4.jfif") 
-base64_image4 = encode_image("./ytf5.jfif") 
+base64_image1 = encode_image("./dr11.jpg") 
+base64_image2 = encode_image("./dr12.jpg") 
+base64_image3 = encode_image("./dr13.jpg") 
+base64_image4 = encode_image("./dr14.jpg") 
 
 # Create a completion request
 response = client.chat.completions.create(
