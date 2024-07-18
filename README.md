@@ -1,42 +1,44 @@
-# Instructions to set up openai api with azure ai (As of 2/7/2024)
+# Instructions to set up openai api with azure ai (As of 18/7/2024)
+## Installing dependencies
+To start, install the required packages:
+
+```sh
+pip install -r requirements.txt
+```
+
 ## Get access to openai group ad-group as well as install Azure cli tool
 ### Accessing Azure CLI:
 Download Azure CLI from [azure cli](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
 ### Finding Azure CLI:
+This part is only necessary if your device cannot find the path to Azure CLI. 
+
 Go to CMD and type `where az`.
-Take note of the path with `./az.cmd`. You will need this path to create your environment.py
+
+Take note of the path with `./az.cmd`. You will need this path to create your .env file
 
 ## Finding token and endpoint
-Token can be automatically created using environment.py script while endpoint can be found in Azure AI Studios/ Resources and Keys/ Resource name/ </> View Code
+Token will automatically be created when running any .py files in /src while endpoint can be found in Azure AI Studios/ Resources and Keys/ Resource name/ </> View Code
 
-## Create environment.py
-Replace [endpoint] and [az cli] with the respective links and paths
-```sh
-import os
-import subprocess
-
-az_path = r[path to az cli]
-
-result = subprocess.run([az_path, 'account', 'get-access-token', '--resource', 'https://cognitiveservices.azure.com', '--query', 'accessToken', '-o', 'tsv'], stdout=subprocess.PIPE)
-token = result.stdout.decode('utf-8').strip()
-
-os.environ['OPENAITOKEN'] = token
-tok=token
-endpoint = [endpoint]
-
-```
-
-Run the environment.py script before running anything else. Do re-run environment.py every hour or so as the token refreshes every hour
+## Finding version
+Take note that the prompt format only works for gpt 4 onwards (only can recognise images with gpt 4 onwards). Replace [model] with gpt version. In my case, I used "gpt-4o". Replace [version] with your version of model. This can be found in Azure AI Studios/ Resources and Keys/ Deployments/ name of model. In my case, I used "2024-02-01"
 
 ## Certificate issues
-I personally had no issues with the certificate (I just downloaded the certificate). However, if you do face issues, Insert the following code into environment.py:
-`os.environ['REQUESTS_CA_BUNDLE'] = [path to certificate]`
-You may access the certificate from the relevant parties
+I personally had no issues with the certificate (I just downloaded the certificate). However, if you do face issues, insert the path to certificate into [path to certificate]
 
-## Resources to help
-[Datacamp: getting started on how to call GPT 4o api](https://www.datacamp.com/tutorial/gpt4o-api-openai-tutorial)
+## Create .env file
+Replace [endpoint], [path to certificate], [version], [model] and [az cli] with the respective links and paths
 
-[Gpt 4o cookbook](https://cookbook.openai.com/examples/gpt4o/introduction_to_gpt4o)
+```
+endpoint = [endpoint]
+az_path = [az cli]
+ver=[version]
+cert=[path to certificate]
+name=[model]
+```
 
-## files
-
+## How to run
+# Food classification
+Run any of the .py files in src to run food classification. Change the image relative path to test different images in
+```
+base64image=encode_image([image relative path])
+```
