@@ -37,7 +37,7 @@ name=[model]
 ```
 
 ## How to run
-# Food classification
+### Food classification
 Run any of the .py files in src to run food classification. Change the image relative path to test different images in
 ```
 base64image=encode_image([image relative path])
