@@ -11,13 +11,30 @@ import requests
 import subprocess
 import time
 from openai import AzureOpenAI
-from environment import endpoint,tok
 from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 from IPython.display import Image, display, Audio, Markdown
 from moviepy.editor import VideoFileClip
+from dotenv import load_dotenv
 
-os.environ['AZURE_OPENAI_ENDPOINT'] = endpoint
-os.environ['AZURE_OPENAI_API_KEY'] = tok
+load_dotenv()
+az_path = os.getenv("az_path")
+
+# Fetch Azure OpenAI access token
+result = subprocess.run([az_path, 'account', 'get-access-token', '--resource', 'https://cognitiveservices.azure.com', '--query', 'accessToken', '-o', 'tsv'], stdout=subprocess.PIPE)
+token = result.stdout.decode('utf-8').strip()
+
+# Set environment variables
+os.environ['AZURE_OPENAI_ENDPOINT'] = os.getenv('endpoint')
+os.environ['AZURE_OPENAI_API_KEY'] = token
+
+
+# Initialize the AzureOpenAI client
+client = AzureOpenAI(
+    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"), 
+    api_key=os.getenv("AZURE_OPENAI_API_KEY"),  
+    api_version=os.getenv("ver")
+)
+
 # encode video into Videodata folder
 VIDEO_PATH = "./Videodata/Foodvideo.mp4"
 
