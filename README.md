@@ -25,7 +25,7 @@ Take note that the prompt format only works for gpt 4 onwards (only can recognis
 ## Certificate issues
 I personally had no issues with the certificate (I just downloaded the certificate). However, if you do face issues, insert the path to certificate into [path to certificate]
 
-## Create .env file
+## Create .env file in /src
 Replace [endpoint], [path to certificate], [version], [model] and [az cli] with the respective links and paths
 
 ```
