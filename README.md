@@ -42,3 +42,5 @@ Run any of the .py files in src to run food classification. Change the image rel
 ```
 base64image=encode_image([image relative path])
 ```
+
+As of now, we have not tested [Promptfromvideo](src/Promptfromvideo.py) as we have not gotten the time to split our videos to frames.
