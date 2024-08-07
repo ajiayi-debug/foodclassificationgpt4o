@@ -1,3 +1,4 @@
+Proof of Concept that GPT 4o is capable of food classification and nutrient estimation. 
 # Instructions to set up openai api with azure ai (As of 18/7/2024)
 ## Installing dependencies
 To start, install the required packages:
